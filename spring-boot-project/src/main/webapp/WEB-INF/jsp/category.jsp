@@ -21,33 +21,29 @@
     
     <div>
    		<form  method='post'>
+			<input type='hidden' name='id' value='${category.id }' />
+			<table class='table table-hover table-responsive table-bordered'>
+				<tr>
+				<tr>
+					<td><b>Category Name</b></td>
+					<td><input type='text' name='name' class='form-control'
+						value="${category.name}" /></td>
+				</tr>
 
-<table class='table table-hover table-responsive table-bordered'>
-<tr>
-        <tr>
-            <td><b>Category Name</b></td>
-            <td><input type='text' name='name' class='form-control' value="${category.name}" /></td>
-        </tr>
- 
-        <tr>
-            <td><b>Description</b></td>
-            <td><input type='text' name='price' class='form-control' size="10.2" value="${category.description}" /></td>
-            
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </td>
-        </tr>
+				<tr>
+					<td><b>Description</b></td>
+					<td><input type='text' name='price' class='form-control'
+						size="10.2" value="${category.description}" /></td>
 
-
-
-
-</table>
-
-
-</form>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</td>
+				</tr>
+			</table>
+		</form>
    	</div>
 
     <!-- Optional JavaScript -->

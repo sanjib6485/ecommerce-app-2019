@@ -19,6 +19,9 @@
     <jsp:include page="shared/header.jsp"></jsp:include>
     
     <div class='container'>
+    <c:if test = '${not empty errorMsg }'>
+    <div class='alert alert-danger'>${errorMsg }</div>
+    </c:if>
     <a href="/selectcategory" class='btn btn-primary mb-3'>Create Category</a>
     <table class='table table-striped'>
     	<thead>
