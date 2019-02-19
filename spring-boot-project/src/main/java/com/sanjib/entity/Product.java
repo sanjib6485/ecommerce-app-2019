@@ -26,7 +26,7 @@ public class Product {
 	@NotBlank
 	private String name;
 
-	@NotBlank
+	@NotNull
 	private BigDecimal price;
 
 	@ManyToOne
@@ -39,20 +39,7 @@ public class Product {
 	@Length(max = 2000)
 	private String description;
 
-	public Product() {
-
-	}
-
-	public Product(Long id, String name, BigDecimal price, Category category, String productImagePath,
-			String description) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.price = price;
-		this.category = category;
-		this.productImagePath = productImagePath;
-		this.description = description;
-	}
+	
 
 	public Long getId() {
 		return id;

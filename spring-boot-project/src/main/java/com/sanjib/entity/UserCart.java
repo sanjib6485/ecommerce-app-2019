@@ -6,7 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "userCart")
@@ -15,25 +20,23 @@ public class UserCart {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private Long userId;
-	private Long productId;
+	
+	@ManyToOne
+	@JoinColumn(name="product_id", nullable = false)
+	private Product product;
+	
+	@ManyToOne
+	@JoinColumn(name="invoice_id", nullable = true)
+	private Invoice invoice;
+	
 	private BigDecimal price;
+
 	private BigDecimal quantity;
+
+	@NotNull
 	private String cartReference;
 
-	public UserCart() {
-
-	}
-
-	public UserCart(Long id, Long userId, Long productId, BigDecimal price, BigDecimal quantity, String cartReference) {
-		super();
-		this.id = id;
-		this.userId = userId;
-		this.productId = productId;
-		this.price = price;
-		this.quantity = quantity;
-		this.cartReference = cartReference;
-	}
+	
 
 	public Long getId() {
 		return id;
@@ -43,20 +46,22 @@ public class UserCart {
 		this.id = id;
 	}
 
-	public Long getUserId() {
-		return userId;
+	
+
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
-	public Long getProductId() {
-		return productId;
+	public Invoice getInvoice() {
+		return invoice;
 	}
 
-	public void setProductId(Long productId) {
-		this.productId = productId;
+	public void setInvoice(Invoice invoice) {
+		this.invoice = invoice;
 	}
 
 	public BigDecimal getPrice() {
@@ -83,10 +88,8 @@ public class UserCart {
 		this.cartReference = cartReference;
 	}
 
-	@Override
-	public String toString() {
-		return "UserCart [id=" + id + ", userId=" + userId + ", productId=" + productId + ", price=" + price
-				+ ", quantity=" + quantity + ", cartReference=" + cartReference + "]";
-	}
+	
+
+	
 
 }

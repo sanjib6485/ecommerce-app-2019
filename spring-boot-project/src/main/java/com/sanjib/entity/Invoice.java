@@ -17,21 +17,24 @@ public class Invoice {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	private Long user_id;
-	private String shippingAddress;
-	private String status;
+
+	@ManyToOne
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
+
+	@ManyToOne
+	@JoinColumn(name = "shippingaddress_id", nullable = true)
+	private Address shippingAddress;
+
+	private String status; // = "DELIVERED, PROCESSING, PROCESSED, ONWAY" ;
+
 	private BigDecimal total;
+
 	private BigDecimal tax;
+
 	private BigDecimal deleveryCharges;
+
 	private BigDecimal grossTotal;
-
-	public Invoice() {
-
-	}
-
-	
-	
 
 	public Long getId() {
 		return id;
@@ -41,25 +44,19 @@ public class Invoice {
 		this.id = id;
 	}
 
-	
-
-	public Long getUser_id() {
-		return user_id;
+	public User getUser() {
+		return user;
 	}
 
-
-
-	public void setUser_id(Long user_id) {
-		this.user_id = user_id;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-
-
-	public String getShippingAddress() {
+	public Address getShippingAddress() {
 		return shippingAddress;
 	}
 
-	public void setShippingAddress(String shippingAddress) {
+	public void setShippingAddress(Address shippingAddress) {
 		this.shippingAddress = shippingAddress;
 	}
 
@@ -101,13 +98,6 @@ public class Invoice {
 
 	public void setGrossTotal(BigDecimal grossTotal) {
 		this.grossTotal = grossTotal;
-	}
-
-	@Override
-	public String toString() {
-		return "Invoice [id=" + id + ", userId=" + userId + ", shippingAddress=" + shippingAddress + ", status="
-				+ status + ", total=" + total + ", tax=" + tax + ", deleveryCharges=" + deleveryCharges
-				+ ", grossTotal=" + grossTotal + "]";
 	}
 
 }

@@ -26,6 +26,18 @@
             <td><b>id</b></td>
             <td><input type='text' name='id' class='form-control' value="${product.id}" /></td>
         </tr>
+        
+        <tr>
+        	<td>Category</td>
+        	<td>
+        		<select class='form-control' name = "categoryID">
+        			<option value=""></option>
+        			<c:forEach items="${categories }" var="category">
+        				<option value = '${category.id }'>${category.name }</option>
+              		</c:forEach>
+        		</select>
+        	</td>
+        </tr>
  
         <tr>
             <td><b>name</b></td>
@@ -43,10 +55,6 @@
             <td><input type='text' name='description' class='form-control' value="${product.description}" /></td>
         </tr>
         
-        <tr>
-            <td><b>categoryId</b></td>
-            <td><input type='text' name='categoryId' class='form-control' value="${product.categoryId}" /></td>
-        </tr>
  
         <tr>
             <td></td>

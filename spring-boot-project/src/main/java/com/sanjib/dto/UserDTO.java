@@ -1,35 +1,12 @@
-package com.sanjib.entity;
+package com.sanjib.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+public class UserDTO {
 
-import org.hibernate.validator.constraints.NotBlank;
-
-@Entity
-@Table(name = "user")
-public class User {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
-	@NotBlank
 	private String firstName;
-
-	@NotNull
 	private String middleName;
-
-	@NotNull
 	private String email;
-
-	@NotNull
 	private String password;
-
-	@NotNull
 	private String lastName;
 	private String roles = " CUSTOMER,ADMIN,SUPERADMIN ";
 
@@ -57,6 +34,14 @@ public class User {
 		this.middleName = middleName;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getLastName() {
 		return lastName;
 	}
@@ -65,12 +50,12 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getRoles() {
+		return roles;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setRoles(String roles) {
+		this.roles = roles;
 	}
 
 	public String getPassword() {

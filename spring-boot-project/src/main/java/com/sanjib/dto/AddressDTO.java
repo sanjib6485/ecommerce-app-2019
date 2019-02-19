@@ -1,45 +1,17 @@
-package com.sanjib.entity;
+package com.sanjib.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import com.sanjib.entity.User;
 
-import org.hibernate.validator.constraints.NotBlank;
+public class AddressDTO {
 
-@Entity
-@Table(name = "address")
-public class Address {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
-	@NotBlank
 	private String addressLine1;
-
 	private String addressLine2;
-
-	@NotBlank
 	private String city;
-
-	@NotBlank
 	private String state;
-	
-	@NotBlank
 	private String zipcode;
-
-	@NotBlank
 	private String phone;
-
-	@ManyToOne
-	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
-
-	
 
 	public Long getId() {
 		return id;
@@ -104,7 +76,5 @@ public class Address {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	
 
 }

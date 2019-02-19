@@ -1,27 +1,10 @@
-package com.sanjib.entity;
+package com.sanjib.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public class CategoryDTO {
 
-import org.hibernate.validator.constraints.NotBlank;
-
-@Entity
-@Table(name = "category")
-public class Category {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	@NotBlank
 	private String name;
-	
 	private String description;
-
-	
 
 	public Long getId() {
 		return id;
