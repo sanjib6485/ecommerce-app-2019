@@ -1,6 +1,7 @@
 package com.sanjib.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.sanjib.dto.CategoryDTO;
@@ -10,8 +11,12 @@ import com.sanjib.repository.CategoryRepository;
 @Service
 public class CategoryServiceImpl implements CategoryIfc {
 
-	@Autowired
-	private CategoryRepository categoryRepository;
+	private final CategoryRepository categoryRepository;
+
+	public CategoryServiceImpl(CategoryRepository categoryRepository) {
+		// TODO Auto-generated constructor stub
+		this.categoryRepository = categoryRepository;
+	}
 
 	@Override
 	public CategoryDTO getCategoryDTO(Long categoryID) throws Exception {
@@ -25,6 +30,17 @@ public class CategoryServiceImpl implements CategoryIfc {
 		} else {
 			throw new Exception("Category does not exist.");
 		}
+	}
+
+	@Override
+	public List<Category> getAllCategory() throws Exception {
+		List<Category> categoryList = (List<Category>) categoryRepository.findAll();
+		return categoryList;
+	}
+
+	@Override
+	public Category save(Category category) {
+		return categoryRepository.save(category);
 	}
 
 }
